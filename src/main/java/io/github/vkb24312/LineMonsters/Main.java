@@ -38,7 +38,7 @@ public class Main {
         System.out.println("Finished");
     }
 
-    static boolean isFinished(){
+    private static boolean isFinished(){
         return (LineMonster.allMonsters.size()<=0);
     }
 }
@@ -46,7 +46,6 @@ public class Main {
 class Frame extends JFrame{
     @Override
     public void paint(Graphics g) {
-        super.paint(g);
         Graphics2D g2d = (Graphics2D) g;
         g2d.setBackground(Color.white);
 
@@ -90,10 +89,10 @@ class LineMonster {
     }
     static ArrayList<LineMonster> allMonsters = new ArrayList<>();
 
-    ArrayList<Point> points = new ArrayList<>();
+    private ArrayList<Point> points = new ArrayList<>();
     private int _direction;
     private int _idnum;
-    static boolean[][] grid = new boolean[Main.gameSize.width][Main.gameSize.height];
+    private static boolean[][] grid = new boolean[Main.gameSize.width][Main.gameSize.height];
 
     LineMonster(Point startingPoint, int direction){
         points.add(startingPoint);
@@ -137,7 +136,7 @@ class LineMonster {
         return futurePoint;
     }
 
-    static boolean isValid(Point p){
+    private static boolean isValid(Point p){
         try {
             return !grid[p.x][p.y];
         } catch (ArrayIndexOutOfBoundsException e){
@@ -177,7 +176,7 @@ class LineMonster {
         if (isValid(child.getHead())) allMonsters.add(child);
     }
 
-    void die(){
+    private void die(){
         if(!toVoid.contains(_idnum)) toVoid.add(_idnum);
     }
     //</editor-fold>
